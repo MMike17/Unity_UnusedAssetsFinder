@@ -805,7 +805,7 @@ public class UnusedAssetsFinder : EditorWindow
 	{
 		GenerateIfNeeded();
 
-		EditorGUILayout.LabelField("Unused assers finder", titleStyle);
+		EditorGUILayout.LabelField("Unused assets finder", titleStyle);
 		EditorGUILayout.Space();
 
 		switch (status)
