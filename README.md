@@ -34,7 +34,7 @@ This tool goes through three separate phases :
 1. **Index all assets** added to the project by the user (see limitations in the [support](#Support) section).
 ![](.Screenshots/Step1.png)
 
-2. **Parse asset references** contained in Unity YAML based files (scenes, prefabs, materials, etc...) as well as code and assets references in C# files (see limitations in the [known issues](#Known) section).
+2. **Parse asset references** contained in Unity YAML based files (scenes, prefabs, materials, etc...) as well as code and assets references in C# files (see limitations in the [support](#Support) section).
 ![](.Screenshots/Step2.png)
 
 3. **Linking assets references** starting from valid start points (scenes referenced in project settings and asset bundles) to provide valid and invalid references chains.
@@ -122,7 +122,7 @@ Several additional file formats are supported :
 - **TextMeshPro** file formats (.fontsettings).
 - **Shadergraph** file formats (.shadergraph, .subshadergraph).
 
-This tool also has partial support for **C# class** declarations (including _partial_) and references as well as _Resources.Load_ calls with plain text paths.\
+This tool also has partial support for **C# class** declarations (including keyword _partial_) and references as well as _Resources.Load_ calls with plain text paths.\
 There is **no support for scopes or namespaces** in C# scripts.
 
 This tool does not support code references :
