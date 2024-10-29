@@ -151,19 +151,20 @@ public class UnusedAssetsFinder : EditorWindow
 		".hlsl",
 		".shader",
 		".shadervariants",
-		".shadergraph", // 95 
+		".shadergraph",
+		".shadersubgraph", // 96
 		// Substance
-		".sbsar", // 96
+		".sbsar", // 97
 		// Colors
-		".colors", // 97
-		".gradients", // 98
+		".colors", // 98
+		".gradients", // 99
 		// Terrain
-		".brush", // 99
+		".brush", // 100
 		".terrainlayer",
 		".spm",
-		".st", // 102
+		".st", // 103
 		// Texture
-		".jpg", // 103
+		".jpg", // 104
 		".jpeg",
 		".tif",
 		".tiff",
@@ -181,11 +182,11 @@ public class UnusedAssetsFinder : EditorWindow
 		".renderTexture",
 		".texture2D",
 		".spriteatlas",
-		".webCamTexture", // 121
+		".webCamTexture", // 122
 		// GUI skin
-		".guiskin", // 122
+		".guiskin", // 123
 		// Video
-		".avi", // 123
+		".avi", // 124
 		".asf",
 		".wmv",
 		".mov",
@@ -196,9 +197,9 @@ public class UnusedAssetsFinder : EditorWindow
 		".mpeg",
 		".ogv",
 		".vp8",
-		".webm", // 134
+		".webm", // 135
 		// Visual effects
-		".flare", // 133
+		".flare", // 136
 		".giparams",
 		".vfx",
 		".vfxoperator",
@@ -207,7 +208,7 @@ public class UnusedAssetsFinder : EditorWindow
 		".particleCurvesSigned",
 		".particleDoubleCurves",
 		".particleDoubleCurvesSigned",
-		".lighting" // 144
+		".lighting" // 145
 	};
 
 	private static readonly int[] YAML_INDEXES = new int[] { 2, 5, 7, 9, 12, 14, 15, 18, 21, 22, 24 };
@@ -1307,28 +1308,28 @@ public class UnusedAssetsFinder : EditorWindow
 		if (index == 86)
 			return AssetType.Scriptable_object;
 
-		if (index >= 87 && index <= 95)
+		if (index >= 87 && index <= 96)
 			return AssetType.Shader;
 
-		if (index == 96)
+		if (index == 97)
 			return AssetType.Substance;
 
-		if (index >= 97 && index <= 98)
+		if (index >= 98 && index <= 99)
 			return AssetType.Colors;
 
-		if (index >= 99 && index <= 102)
+		if (index >= 100 && index <= 103)
 			return AssetType.Terrain;
 
-		if (index >= 103 && index <= 121)
+		if (index >= 104 && index <= 122)
 			return AssetType.Texture;
 
-		if (index == 121)
+		if (index == 123)
 			return AssetType.GUI_skin;
 
-		if (index >= 123 && index <= 134)
+		if (index >= 124 && index <= 135)
 			return AssetType.Video;
 
-		if (index >= 135 && index <= 144)
+		if (index >= 136 && index <= 145)
 			return AssetType.Visual_effect;
 
 		if (IsTextFile(info))
