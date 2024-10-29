@@ -57,7 +57,7 @@ If you change any code asset or asset references in the project you risk falsify
 The analysis results are stored in the _PlayerPrefs_ (depends on the platform) and can be loaded instead of starting a new analysis.\
 This way of loading will not invalidate any features of this tool.
 
-If an out of date analysis is loadded and you try to delete an asset that doesn't exist in the form detected by the analysis, the tool will desplay a warning in the console and abort the removal of that asset.
+If an out of date analysis is loaded  and you try to delete an asset that doesn't exist in the form detected by the analysis, the tool will display a warning in the console and abort the removal of that asset.
 
 ### Results
 
