@@ -9,22 +9,6 @@ using UnityEngine.SceneManagement;
 /// <summary>Tool used to find unused assets</summary>
 public class UnusedAssetsFinder : EditorWindow
 {
-	/*
-	What does this tool support ?
-
-	- Most files supported by unity
-	- Asset references
-	- Static script references
-	- Resources.Load calls
-
-	What doesn't this tool support ?
-
-	- Classes with same name get confused together
-	- References to classes from plugin files (dll)
-	- Adressables
-	- Variables named after types but that are not of that type
-	*/
-
 	private const string RESULTS_KEY = nameof(UnusedAssetsFinder) + "_Results";
 	private const int MAX_FILE_SIZE = 100000;
 	private const string BUILD_SETTINGS_FLAG = "BuildSettings";
@@ -724,8 +708,8 @@ public class UnusedAssetsFinder : EditorWindow
 
 			EditorUtility.DisplayProgressBar(
 				"Step 3 : Analyzing reference chains",
-				"Analyzing chains of references (" + Instance.progressIndex + "/" + maxIndex + assetsToValidate.Count + ")",
-				(float)Instance.progressIndex / maxIndex + assetsToValidate.Count
+				"Analyzing chains of references (" + Instance.progressIndex + "/" + (maxIndex + assetsToValidate.Count) + ")",
+				(float)Instance.progressIndex / (maxIndex + assetsToValidate.Count)
 			);
 
 			Instance.progressIndex++;
@@ -954,9 +938,9 @@ public class UnusedAssetsFinder : EditorWindow
 				DisplayColored(
 					() =>
 					{
-						if (GUILayout.Button("Delete assets"))
+						if (GUILayout.Button("Remove assets"))
 						{
-							string message = "Are you sure you want to delete the selected " + guidToSelectedStatus.Count(item => item.Value) + " assets ?\n\nThe selected assests will be moved to a recovery folder instead of being deleted. They can be recovered with the \"Restore assets\" button.\n\nAssets in the recovery folder with the same name will be deleted.";
+							string message = "Are you sure you want to remove the selected " + guidToSelectedStatus.Count(item => item.Value) + " assets ?\n\nThe selected assests will be moved to a recovery folder instead of being deleted. They can be recovered with the \"Restore assets\" button.\n\nAssets in the recovery folder with the same name will be deleted.";
 
 							if (EditorUtility.DisplayDialog("Asset removal", message, "Yes", "No"))
 								MoveAssetsToRecovery();
@@ -975,7 +959,7 @@ public class UnusedAssetsFinder : EditorWindow
 					{
 						if (hasRestore && GUILayout.Button("Restore assets"))
 						{
-							string message = "Are you sure you want to recover all deleted assets ?\nThis action will delete assets with the same name in the asset folder.";
+							string message = "Are you sure you want to recover all removed assets ?\nThis action will delete assets with the same name as recovered assets in the asset folder.";
 
 							if (EditorUtility.DisplayDialog("Asset recovery", message, "Yes", "No"))
 								RecoverAssets();
@@ -1898,6 +1882,12 @@ public class UnusedAssetsFinder : EditorWindow
 
 	private static void MoveAsset(string originPath, string newPath)
 	{
+		if (!File.Exists(originPath))
+		{
+			Debug.LogWarning("Couldn't find the asset you're trying to remove. You probably need to run a new project analysis. Skipping file.");
+			return;
+		}
+
 		string path = originPath.Replace("\\", "/").Replace(Application.dataPath.Replace("\\", "/"), "");
 		List<string> dirs = new List<string>(path.Split("/", StringSplitOptions.RemoveEmptyEntries));
 		string currentDir = null;
