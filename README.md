@@ -4,6 +4,8 @@ _This tool is a Unity editor tool._
 
 Unused Assets Finder is a Unity editor tool used to detect and monitor assets that are not used in your project.
 
+TL;DR : Jump to the [Support](#Support) section to check what is and is not supported by this tool.
+
 ## Usage
 
 In the Unity Editor, in the top menu bar, under the "Tools" tab you'll find the "Unused Assets Finder" option.\
